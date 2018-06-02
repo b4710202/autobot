@@ -9,7 +9,8 @@
 	// Get message from Line API
 	$content = file_get_contents('php://input');
 	$events = json_decode($content, true);
-	
+	$httpClient = new CurlHTTPClient($channel_token);
+					$bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 	if (!is_null($events['events'])) {
 		// Loop through each event
 		foreach ($events['events'] as $event) {
@@ -21,8 +22,7 @@
 					$replyToken = $event['replyToken'];
 					// Reply message
 					$respMessage = 'Hello, your message is '. $event['message']['text'];
-					$httpClient = new CurlHTTPClient($channel_token);
-					$bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
+					////
 					$textMessageBuilder = new TextMessageBuilder($respMessage);
 					$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 					break;
