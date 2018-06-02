@@ -1,5 +1,5 @@
 <?php
-	require('./vendor/autoload.php');
+	require_once('./vendor/autoload.php');
 	// Namespace
 	use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
 	use \LINE\LINEBot;
