@@ -1,9 +1,13 @@
 <?php
+	ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+	
 	require_once('./vendor/autoload.php');
 	// Namespace
-	use LINE\LINEBot\HTTPClient\CurlHTTPClient;
-	use LINE\LINEBot;
-	use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
+	use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
+	use \LINE\LINEBot;
+	use \LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 	$channel_token = '+wH1+7b6BQxj7F5o6PjJ8jZQAjNCCoBSPfNReVKkM1A8uzmTiYov6YFAcjmyDlMuMj2IflY0Sudc7eOQs9WTtEjR9LyKvMz7n0jh8O+RHi7W+kmOxfXAYbPZZqO9rj7mkEPL+WNvi933Iue+4SM+wAdB04t89/1O/w1cDnyilFU=';
 	$channel_secret = 'ed2f82255280a198e32bee01585c2c87';
 	// Get message from Line API
