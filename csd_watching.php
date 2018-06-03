@@ -1,6 +1,4 @@
-<?php
-
-	
+<?php	
 	require_once('./vendor/autoload.php');
 	// Namespace
 	use \LINE\LINEBot\HTTPClient\CurlHTTPClient;
@@ -22,10 +20,29 @@
 				if ($event['message']['type'] == 'text') {					
 					// Reply message
 					$respMessage = 'Hello, your message is '. $event['message']['text'];
+					
 					$httpClient = new CurlHTTPClient($channel_token);
 					$bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 					$textMessageBuilder = new TextMessageBuilder($respMessage);
 					$response = $bot->replyMessage($replyToken, $textMessageBuilder);
+				}	
+				else if ($event['message']['type'] == 'image') {
+					
+				}
+				else if ($event['message']['type'] == 'video') {
+					
+				}
+				else if ($event['message']['type'] == 'audio') {
+					
+				}
+				else if ($event['message']['type'] == 'file') {
+					
+				}
+				else if ($event['message']['type'] == 'location') {
+					
+				}
+				else if ($event['message']['type'] == 'sticker') {
+					
 				}				
 			}
 		}
