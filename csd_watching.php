@@ -24,7 +24,7 @@
 				// Get replyToken
 				$replyToken = $event['replyToken'];
 				if ($event['message']['type'] == 'text') {	
-					$userID = $event['source']['userID'];
+					$userID = $event['source']['userId'];
 					$name = 'x';
 					$response = $bot->getProfile('$userID');
 					
