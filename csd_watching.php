@@ -37,7 +37,7 @@
 					}
 					// Reply message
 					//$respMessage = 'Hello, your message is '. $event['message']['text'];
-					$respMessage = 'Hello, your name is '. $name;
+					$respMessage = 'Hello, your name is '. $response;
 					$textMessageBuilder = new TextMessageBuilder($respMessage);
 					$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 				}	
