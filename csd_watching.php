@@ -26,7 +26,7 @@
 				if ($event['message']['type'] == 'text') {	
 					$userID = $event['source']['userId'];
 					$name = '';
-					$response = $bot->getProfile('$userID');
+					$response = $bot->getProfile($userID);
 					
 					if ($response->isSucceeded()) {
 						$profile = $response->getJSONDecodedBody();
