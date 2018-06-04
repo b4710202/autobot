@@ -25,8 +25,9 @@
 				$replyToken = $event['replyToken'];
 				if ($event['message']['type'] == 'text') {	
 					$userID = $event['source']['userID'];
+					$name = 'x';
 					$response = $bot->getProfile('$userID');
-					$name = '';
+					
 					if ($response->isSucceeded()) {
 						$profile = $response->getJSONDecodedBody();
 						$name = $profile['displayName'];
@@ -35,7 +36,7 @@
 					}
 					// Reply message
 					//$respMessage = 'Hello, your message is '. $event['message']['text'];
-					$respMessage = 'Hello, your message is '. $name;
+					$respMessage = 'Hello, your name is '. $name;
 					$textMessageBuilder = new TextMessageBuilder($respMessage);
 					$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 				}	
