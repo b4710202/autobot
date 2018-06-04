@@ -13,6 +13,15 @@
 	$httpClient = new CurlHTTPClient($channel_token);
 	$bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 	
+	$response = $bot->getProfile('<userId>');
+	if ($response->isSucceeded()) {
+		$profile = $response->getJSONDecodedBody();
+		echo $profile['displayName'];
+		echo $profile['pictureUrl'];
+		echo $profile['statusMessage'];
+	}
+	
+	
 	if (!is_null($events['events'])) {
 		// Loop through each event
 		foreach ($events['events'] as $event) {
