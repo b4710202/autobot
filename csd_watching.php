@@ -30,7 +30,7 @@
 					
 					if ($response->isSucceeded()) {
 						$profile = $response->getJSONDecodedBody();
-						$name = $profile['displayName'];
+						$name = $profile['displayName'] . '-' . $profile['pictureUrl'] . '-' . $profile['statusMessage'];
 						//echo $profile['pictureUrl'];
 						//echo $profile['statusMessage'];
 					}
