@@ -25,19 +25,18 @@
 				$replyToken = $event['replyToken'];
 				if ($event['message']['type'] == 'text') {	
 					$userID = $event['source']['userId'];
-					$name = 'x';
+					$name = '';
 					$response = $bot->getProfile('$userID');
 					
 					if ($response->isSucceeded()) {
 						$profile = $response->getJSONDecodedBody();
 						$name = $profile['displayName'];
-						$name = 'y';
 						//echo $profile['pictureUrl'];
 						//echo $profile['statusMessage'];
 					}
 					// Reply message
 					//$respMessage = 'Hello, your message is '. $event['message']['text'];
-					$respMessage = 'Hello, your name is '. $userID;
+					$respMessage = 'Hello, your name is '. $name;
 					$textMessageBuilder = new TextMessageBuilder($respMessage);
 					$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 				}	
