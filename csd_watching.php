@@ -31,6 +31,7 @@
 					if ($response->isSucceeded()) {
 						$profile = $response->getJSONDecodedBody();
 						$name = $profile['displayName'];
+						$name = 'y';
 						//echo $profile['pictureUrl'];
 						//echo $profile['statusMessage'];
 					}
