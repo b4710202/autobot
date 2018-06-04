@@ -13,13 +13,7 @@
 	$httpClient = new CurlHTTPClient($channel_token);
 	$bot = new LINEBot($httpClient, array('channelSecret' => $channel_secret));
 	
-	$response = $bot->getProfile('<userId>');
-	if ($response->isSucceeded()) {
-		$profile = $response->getJSONDecodedBody();
-		echo $profile['displayName'];
-		echo $profile['pictureUrl'];
-		echo $profile['statusMessage'];
-	}
+	
 	
 	
 	if (!is_null($events['events'])) {
@@ -29,9 +23,19 @@
 			if ($event['type'] == 'message') {
 				// Get replyToken
 				$replyToken = $event['replyToken'];
-				if ($event['message']['type'] == 'text') {					
+				if ($event['message']['type'] == 'text') {	
+					$userID = $event['source']['userID'];
+					$response = $bot->getProfile('$userID');
+					$name = '';
+					if ($response->isSucceeded()) {
+						$profile = $response->getJSONDecodedBody();
+						$name = $profile['displayName'];
+						//echo $profile['pictureUrl'];
+						//echo $profile['statusMessage'];
+					}
 					// Reply message
-					$respMessage = 'Hello, your message is '. $event['message']['text'];
+					//$respMessage = 'Hello, your message is '. $event['message']['text'];
+					$respMessage = 'Hello, your message is '. $name;
 					$textMessageBuilder = new TextMessageBuilder($respMessage);
 					$response = $bot->replyMessage($replyToken, $textMessageBuilder);
 				}	
